@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CIRIYC PRO — Industrial Multi-Agent Systems</title>
+<meta name="description" content="Deep-tech R&D laboratory for industrial multi-agent systems. Real-time decentralized orchestration for heavy industry. Astana IT Park, Kazakhstan.">
+<link rel="icon" href="star.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0a0a0a; --grey:#555; --light:#888; --line:#e8e8e8; --bg:#ffffff; --accent:#1d4ed8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--black);line-height:1.6}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+
+/* HEADER */
+header{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:100}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px;letter-spacing:2px;color:var(--black);text-decoration:none;white-space:nowrap}
+.logo img{width:30px;height:30px}
+nav.menu{display:flex;gap:32px}
+nav.menu a{color:var(--grey);text-decoration:none;font-size:14px;font-weight:500;transition:color .15s}
+nav.menu a:hover{color:var(--black)}
+.cta-btn{background:var(--black);color:#fff;padding:10px 22px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:opacity .15s}
+.cta-btn:hover{opacity:.8}
+
+/* HERO */
+.hero{position:relative;padding:110px 0 300px;background:#fff url('hero.jpg') no-repeat bottom center/cover}
+.hero h1{font-size:clamp(44px,6.5vw,84px);font-weight:800;letter-spacing:-2.5px;line-height:1.04;max-width:900px}
+.hero .sub{margin-top:28px;font-size:20px;color:var(--grey);max-width:640px;font-weight:400}
+.hero .actions{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap}
+.btn-secondary{border:1px solid var(--line);background:#fff;color:var(--black);padding:12px 26px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none;transition:border-color .15s}
+.btn-secondary:hover{border-color:var(--black)}
+.btn-primary{background:var(--black);color:#fff;padding:12px 26px;border-radius:8px;font-size:15px;font-weight:600;text-decoration:none}
+.btn-primary:hover{opacity:.85}
+
+/* STATS */
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.stat{padding:36px 24px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:none}
+.stat b{display:block;font-size:30px;font-weight:700;letter-spacing:-1px}
+.stat span{font-size:13px;color:var(--light);margin-top:4px;display:block}
+
+/* SECTIONS */
+section{padding:110px 0}
+.kicker{font-size:12px;letter-spacing:2.5px;text-transform:uppercase;color:var(--light);font-weight:600;margin-bottom:16px}
+h2{font-size:clamp(30px,4vw,46px);font-weight:700;letter-spacing:-1.5px;line-height:1.1;margin-bottom:20px}
+.lead{font-size:18px;color:var(--grey);max-width:680px}
+
+/* TECH GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;margin-top:56px}
+.card{border:1px solid var(--line);border-radius:14px;padding:32px;transition:border-color .2s}
+.card:hover{border-color:#bbb}
+.card h3{font-size:17px;font-weight:600;margin-bottom:10px;letter-spacing:-.3px}
+.card p{font-size:14.5px;color:var(--grey)}
+
+/* PILOTS */
+.pilot{display:grid;grid-template-columns:1fr 2fr auto;gap:24px;align-items:baseline;padding:30px 0;border-top:1px solid var(--line)}
+.pilot:last-child{border-bottom:1px solid var(--line)}
+.pilot h3{font-size:18px;font-weight:600;letter-spacing:-.3px}
+.pilot .desc{font-size:15px;color:var(--grey)}
+.tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:20px;border:1px solid var(--line);color:var(--grey);white-space:nowrap}
+.tag.live{border-color:#16a34a;color:#16a34a}
+
+/* RESEARCH */
+.research-block{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:56px}
+.research-card{border:1px solid var(--line);border-radius:14px;padding:40px}
+.research-card h3{font-size:20px;font-weight:700;letter-spacing:-.5px;margin-bottom:12px}
+.research-card p{font-size:15px;color:var(--grey);margin-bottom:20px}
+.research-card a{color:var(--black);font-weight:600;font-size:14px;text-decoration:none;border-bottom:1px solid var(--black)}
+.meta{font-size:12.5px;color:var(--light);margin-top:16px}
+
+/* CHAT WIDGET */
+.chat-section{padding:110px 0;background:#fafafa;border-top:1px solid var(--line)}
+.chat-widget-title{font-size:clamp(30px,4vw,52px);font-weight:700;letter-spacing:-1.5px;color:var(--black);text-align:center;line-height:1.1;max-width:900px;margin:0 auto 48px}
+.chat-widget-container{font-family:'Inter',sans-serif;width:100%;max-width:1000px;height:600px;border:1px solid var(--line);border-radius:14px;display:flex;flex-direction:column;overflow:hidden;margin:0 auto;background:#fff}
+.chat-widget-messages{flex-grow:1;padding:24px;overflow-y:auto;background:#fff}
+.chat-widget-message{margin-bottom:20px;line-height:1.6;font-size:15px}
+.chat-widget-message.user{background:#f1f1f3;color:#000;width:fit-content;max-width:70%;margin-left:auto;padding:10px 16px;border-radius:16px;border-bottom-right-radius:4px}
+.chat-widget-message.bot{color:#333;max-width:100%}
+.chat-widget-message.bot strong{font-weight:600;color:#000}
+.chat-widget-message.bot code{background:#f1f1f3;padding:2px 6px;border-radius:4px;font-size:13.5px}
+.chat-widget-message.bot ul,.chat-widget-message.bot ol{margin:10px 0;padding-left:20px}
+.chat-widget-message.bot .paragraph-break{display:block;height:8px}
+.typing-dots{display:inline-flex;align-items:center;gap:4px}
+.typing-dots span{width:7px;height:7px;border-radius:50%;background:#999;animation:blink 1.4s infinite}
+.typing-dots span:nth-child(2){animation-delay:.2s}
+.typing-dots span:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,60%,100%{opacity:.2}30%{opacity:1}}
+.chat-widget-input-form{display:flex;padding:12px;border-top:1px solid var(--line);background:#fff}
+.chat-widget-input{flex-grow:1;border:1px solid #ddd;border-radius:10px;padding:12px 16px;font-size:15px;outline:none;font-family:inherit}
+.chat-widget-input:focus{border-color:#999}
+.chat-widget-button{border:none;background:var(--black);color:#fff;border-radius:10px;width:46px;height:46px;margin-left:10px;font-size:18px;cursor:pointer}
+.chat-widget-button:hover{opacity:.85}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:64px 0;background:#fff}
+.foot{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+.foot .logo{font-size:15px}
+.foot-col{font-size:13.5px;color:var(--grey);line-height:2}
+.foot-col b{color:var(--black);display:block;margin-bottom:6px;font-size:13px;letter-spacing:1px;text-transform:uppercase}
+.foot a{color:var(--grey);text-decoration:none}
+.foot a:hover{color:var(--black)}
+.copyright{margin-top:48px;font-size:12.5px;color:var(--light)}
+
+@media(max-width:900px){
+  nav.menu{display:none}
+  .stats .wrap{grid-template-columns:repeat(2,1fr)}
+  .stat{border-left:none;border-top:1px solid var(--line)}
+  .pilot{grid-template-columns:1fr}
+  .research-block{grid-template-columns:1fr}
+  .hero{padding:70px 0 220px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#"><span>CIRIYC PRO</span><img src="star.png" alt=""></a>
+    <nav class="menu">
+      <a href="#technology">Technology</a>
+      <a href="#pilots">Pilots</a>
+      <a href="#research">Research</a>
+      <a href="#company">Company</a>
+    </nav>
+    <a class="cta-btn" href="#contact">Talk to us</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <h1>Industrial<br>Multi-Agent Systems.</h1>
+    <p class="sub">A deep-tech R&amp;D laboratory building the real-time decision layer for heavy industry — decentralized agents that coordinate people, machines and data in under a second.</p>
+    <div class="actions">
+      <a class="btn-primary" href="#pilots">See pilots</a>
+      <a class="btn-secondary" href="#research">Open research</a>
+    </div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>&lt;1s</b><span>decision latency in agentic contours</span></div>
+    <div class="stat"><b>10–27×</b><span>projected ROI across pilot designs</span></div>
+    <div class="stat"><b>MAIF</b><span>open industrial agent framework, Apache 2.0</span></div>
+    <div class="stat"><b>2026</b><span>first national standard draft for industrial MAS</span></div>
+  </div>
+</div>
+
+<section id="technology">
+  <div class="wrap">
+    <div class="kicker">Technology</div>
+    <h2>Decentralized orchestration,<br>built for the factory floor.</h2>
+    <p class="lead">Monolithic ERP reacts in batches. Our agent contours react in real time — each agent owns its slice of the operation, negotiates with its neighbours and keeps working when the network doesn't.</p>
+    <div class="grid">
+      <div class="card"><h3>Real-time coordination</h3><p>Event-driven agent mesh replaces batch scheduling. Decisions propagate through the contour in under a second.</p></div>
+      <div class="card"><h3>Decentralized by design</h3><p>No single point of failure. Agents degrade gracefully and re-synchronize when connectivity returns — built for field and plant conditions.</p></div>
+      <div class="card"><h3>Substrate-agnostic</h3><p>Runs on-premise, at the edge or in the cloud. LLM-backbone independent: agents keep their contracts whatever model sits underneath.</p></div>
+      <div class="card"><h3>Standards-first</h3><p>Every contour is built on MAIF — our open multi-agent framework — so integrations are auditable and vendor lock-in stays out.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pilots" style="padding-top:0">
+  <div class="wrap">
+    <div class="kicker">Pilots &amp; prototypes</div>
+    <h2>Industrial cases in motion.</h2>
+    <p class="lead">We state statuses plainly: what is live, what is a prototype, what is a proposed pilot.</p>
+    <div style="margin-top:56px">
+      <div class="pilot">
+        <h3>Digital Dispatcher</h3>
+        <div class="desc">Agentic dispatch contour for oilfield operations — work orders, crews and telemetry coordinated by a multi-agent layer instead of a human bottleneck.</div>
+        <span class="tag">Pilot proposed</span>
+      </div>
+      <div class="pilot">
+        <h3>Agentic Telematics</h3>
+        <div class="desc">Re-architecture of legacy field-workforce telematics into an agentic decision system for a mobile operator. Interactive prototype available.</div>
+        <span class="tag live">Live prototype</span>
+      </div>
+      <div class="pilot">
+        <h3>Compliance Assistant</h3>
+        <div class="desc">Production system for banking-compliance casework: mail-stack automation, document analysis and regulator-grade audit trail.</div>
+        <span class="tag live">In production</span>
+      </div>
+      <div class="pilot">
+        <h3>Digital Energy Director</h3>
+        <div class="desc">Multi-agent platform for plant-level energy and carbon management on a digital-twin substrate. Architecture and economics validated.</div>
+        <span class="tag">Prototype / architecture</span>
+      </div>
+      <div class="pilot">
+        <h3>Operator Physiology Monitoring</h3>
+        <div class="desc">Multi-agent monitoring of operator physiological state for high-risk industrial workplaces.</div>
+        <span class="tag">R&amp;D — grant track</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="research" style="padding-top:0">
+  <div class="wrap">
+    <div class="kicker">Research &amp; standards</div>
+    <h2>We publish the foundations.</h2>
+    <div class="research-block">
+      <div class="research-card">
+        <h3>MAIF — Multi-Agent Industrial Framework</h3>
+        <p>An open standard for building auditable industrial agent systems: agent contracts, communication protocol, orchestration semantics. Registered and released under Apache 2.0.</p>
+        <a href="https://github.com/ciriycpro/MAIF">github.com/ciriycpro/MAIF</a>
+        <div class="meta">Rospatent reg. №2026611550 · Apache 2.0</div>
+      </div>
+      <div class="research-card">
+        <h3>National standard draft for industrial MAS</h3>
+        <p>First-edition draft of a national preliminary standard (ПНСТ) for industrial multi-agent systems — developed within technical committee TC 164 "Artificial Intelligence" and open for public review.</p>
+        <a href="https://github.com/ciriycpro/pnst-industrial-mas">github.com/ciriycpro/pnst-industrial-mas</a>
+        <div class="meta">TC 164 · Public review · 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="chat-section" id="contact">
+  <div class="wrap">
+    <div class="chat-widget-title">We have data on your industry. Want a look?</div>
+    <div class="chat-widget-container">
+      <div class="chat-widget-messages" id="chat-messages"></div>
+      <form class="chat-widget-input-form" id="chat-form">
+        <input class="chat-widget-input" type="text" id="user-input" placeholder="Type a message..." autocomplete="off">
+        <button class="chat-widget-button" type="submit">➤</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer id="company">
+  <div class="wrap">
+    <div class="foot">
+      <a class="logo" href="#"><span>CIRIYC PRO</span><img src="star.png" alt=""></a>
+      <div class="foot-col">
+        <b>Company</b>
+        Industrial multi-agent R&amp;D laboratory<br>
+        Astana IT Park · Kazakhstan
+      </div>
+      <div class="foot-col">
+        <b>Contact</b>
+        <a href="mailto:hello@ciriycpro.com">hello@ciriycpro.com</a><br>
+        <a href="https://github.com/ciriycpro">github.com/ciriycpro</a>
+      </div>
+      <div class="foot-col">
+        <b>Network</b>
+        <a href="https://ciriyc.ru">ciriyc.ru — Russia</a><br>
+        <a href="https://ciriycpro.org">ciriycpro.org — Research</a>
+      </div>
+    </div>
+    <div class="copyright">© 2026 CIRIYC PRO. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const chatForm = document.getElementById('chat-form');
+    const userInput = document.getElementById('user-input');
+    const chatMessages = document.getElementById('chat-messages');
+
+    const API_ENDPOINT = "https://app.ciriyc.ru";
+    const AI_SYSTEM_PROMPT = `ROLE: Digital transformation expert at CIRIYC PRO, an industrial multi-agent systems R&D laboratory (Astana IT Park, Kazakhstan). Your specialization is Multi-Agent Systems for heavy industry. Goal: understand the visitor's operational pain, qualify the lead, and guide toward a call or pilot discussion. Always answer in English unless the visitor writes in another language.
+
+=== CRITICAL RULE: HONESTY ABOUT STATUS ===
+All CIRIYC PRO products are in development stages:
+- Digital Dispatcher (oilfield ops): pilot proposed
+- Agentic Telematics (field workforce): live interactive prototype
+- Compliance Assistant (banking compliance): in production
+- Digital Energy Director (plant energy/carbon): prototype & validated architecture
+- Operator Physiology Monitoring: R&D, grant track
+
+CORRECT PHRASES: "We are developing...", "The designed system is projected to...", "Projected savings are...", "We propose a pilot for..."
+NEVER claim: "deployed", "already saving", "in industrial operation" for anything except Compliance Assistant.
+
+=== COMPANY FACTS ===
+- Deep-tech R&D lab for industrial multi-agent systems
+- Decentralized real-time contours, <1s decision latency
+- MAIF: open industrial agent framework (Apache 2.0, Rospatent №2026611550)
+- First national preliminary standard draft for industrial MAS (TC 164)
+- Substrate-agnostic: on-premise, edge, cloud; LLM-independent agent contracts
+
+=== STYLE ===
+FIRST 2-3 MESSAGES: max 3-4 sentences, no markdown, plain language, ALWAYS end with a question about the visitor's operational pain.
+AFTER 2-3 EXCHANGES: up to 6 sentences, concrete cases with figures, propose an action (call / pilot discussion).
+QUALIFIED LEAD: technical detail, steps: Memorandum → Scope → MVP; share contact hello@ciriycpro.com.
+
+=== TONE ===
+Confident expert. Facts, not buzzwords. Respect the visitor's time. Actively uncover pains.`;
+
+    let conversationHistory = [{ role: "system", content: AI_SYSTEM_PROMPT }];
+    let isInitialized = false;
+
+    function parseMarkdown(text) {
+        text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        text = text.replace(/__(.*?)__/g, '<strong>$1</strong>');
+        text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
+        const lines = text.split('\n');
+        let result = '', inList = false, listType = '';
+        for (let i = 0; i < lines.length; i++) {
+            const line = lines[i].trim();
+            if (line.startsWith('• ') || line.startsWith('- ')) {
+                if (!inList || listType !== 'ul') { if (inList) result += `</${listType}>`; result += '<ul>'; inList = true; listType = 'ul'; }
+                result += '<li>' + line.substring(2) + '</li>';
+            } else if (line.match(/^\d+\.\s/)) {
+                if (!inList || listType !== 'ol') { if (inList) result += `</${listType}>`; result += '<ol>'; inList = true; listType = 'ol'; }
+                result += '<li>' + line.replace(/^\d+\.\s/, '') + '</li>';
+            } else {
+                if (inList) { result += `</${listType}>`; inList = false; listType = ''; }
+                if (line === '') { result += '<span class="paragraph-break"></span>'; }
+                else { result += line + ' '; }
+            }
+        }
+        if (inList) result += `</${listType}>`;
+        return result.trim();
+    }
+
+    function typeMessage(element, text, speed = 25) {
+        return new Promise((resolve) => {
+            const htmlText = parseMarkdown(text);
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = htmlText;
+            const parts = [];
+            function extractParts(node) {
+                if (node.nodeType === 3) { for (let char of node.textContent) parts.push({content: char}); }
+                else if (node.nodeType === 1) {
+                    const openTag = document.createElement(node.tagName);
+                    Array.from(node.attributes).forEach(a => openTag.setAttribute(a.name, a.value));
+                    parts.push({content: openTag.outerHTML.replace(/<\/.*?>$/, '')});
+                    for (let child of node.childNodes) extractParts(child);
+                    parts.push({content: '</' + node.tagName.toLowerCase() + '>'});
+                }
+            }
+            for (let child of tempDiv.childNodes) extractParts(child);
+            let index = 0, currentHTML = '';
+            element.innerHTML = '';
+            const interval = setInterval(() => {
+                if (index < parts.length) {
+                    currentHTML += parts[index].content;
+                    element.innerHTML = currentHTML;
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                    index++;
+                } else { clearInterval(interval); resolve(); }
+            }, speed);
+        });
+    }
+
+    function addLoadingIndicator() {
+        const el = document.createElement('div');
+        el.className = 'chat-widget-message bot loading-indicator';
+        el.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
+        chatMessages.appendChild(el);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        return el;
+    }
+
+    function addMessageInstant(text, type) {
+        const el = document.createElement('div');
+        el.className = `chat-widget-message ${type}`;
+        el.innerHTML = text.replace(/\n/g, '<br>');
+        chatMessages.appendChild(el);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        return el;
+    }
+
+    async function sendMessage(userMessage = null) {
+        if (userMessage) {
+            addMessageInstant(userMessage, 'user');
+            conversationHistory.push({role: "user", content: userMessage});
+        }
+        const loadingElement = addLoadingIndicator();
+        try {
+            const response = await fetch(API_ENDPOINT, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({messages: conversationHistory})
+            });
+            loadingElement.remove();
+            if (!response.ok) throw new Error(`API error: ${response.status}`);
+            const data = await response.json();
+            if (data.choices && data.choices.length > 0 && data.choices[0].message) {
+                const botMessage = data.choices[0].message.content;
+                conversationHistory.push({role: "assistant", content: botMessage});
+                const el = document.createElement('div');
+                el.className = 'chat-widget-message bot';
+                chatMessages.appendChild(el);
+                await typeMessage(el, botMessage);
+            } else throw new Error("Empty model response");
+        } catch (error) {
+            loadingElement.remove();
+            addMessageInstant('Connection error. Please try again.', 'bot');
+        }
+    }
+
+    chatForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const userMessage = userInput.value.trim();
+        if (!userMessage) return;
+        userInput.value = '';
+        sendMessage(userMessage);
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !isInitialized) {
+                isInitialized = true;
+                const welcomeText = "Welcome to **CIRIYC PRO**. We build **multi-agent systems** for heavy industry — decentralized AI contours that make decisions in **real time**.\n\nThe system is ready. What should we analyze?";
+                const el = document.createElement('div');
+                el.className = 'chat-widget-message bot';
+                chatMessages.appendChild(el);
+                typeMessage(el, welcomeText);
+                conversationHistory.push({role: "assistant", content: welcomeText});
+            }
+        });
+    }, {threshold: 0.5});
+    observer.observe(chatMessages.parentElement);
+});
+</script>
+</body>
+</html>
